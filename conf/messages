@@ -1,0 +1,3 @@
+mail.leave.apply.subject = Leave Request by {0} for {1,date} - {2,date}.
+mail.leave.approve.subject = Leave Approved : {0} - {1}
+mail.leave.reject.subject = Leave Rejected : {0} - {1}

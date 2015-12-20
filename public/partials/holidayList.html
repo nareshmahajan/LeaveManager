@@ -1,0 +1,49 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="glyphicon glyphicon-home"></i>
+        <a href="#dashBoard">Dashboard</a>
+
+    </li>
+    <li class="active">Holiday</li>
+</ol>
+
+
+<div>
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <button type="button" class="btn btn-success" ng-click="addHoliday()">Add Holiday</button>
+        </div>
+
+    </div>
+    <table st-table="displayed" class="table table-striped">
+        <thead>
+        <tr>
+            <th ng-repeat="header in headers" width="{{header.width}}%" st-sort="header.contentField">
+                {{header.label}}
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info">
+            <td ng-if="contents.length == 0" colspan="3" class="text-center">
+                No Records Available to Display
+            </td>
+        </tr>
+        <tr row-color="content.status"  ng-repeat="content in contents">
+
+            <td>
+                <span class="glyphicon glyphicon-zoom-in cursor-pointer" uib-tooltip="View Holiday"
+                      tooltip-placement="top" tooltip-trigger="mouseenter" ng-click="viewHoliday(content)"></span>&nbsp;
+                <span class="glyphicon glyphicon-pencil cursor-pointer" uib-tooltip="Edit Holiday"
+                      tooltip-placement="top" tooltip-trigger="mouseenter" ng-click="editHoliday(content)"></span> &nbsp;
+                <span class="glyphicon glyphicon-trash cursor-pointer" uib-tooltip="Remove Holiday"
+                      tooltip-placement="top" tooltip-trigger="mouseenter" ng-click="deleteHoliday(content)"></span></td>
+            <td>{{content.holidayDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{content.reason}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

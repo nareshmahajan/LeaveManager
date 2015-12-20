@@ -1,0 +1,16 @@
+@(modelData: Map[String, String])
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div><p>Hi,</p> <p><b>@modelData.get("userDescription")</b>
+            has applied for Leave From &nbsp;&nbsp;<b><span>@modelData.get("fromDate")</span>
+                to &nbsp;<span>@modelData.get("toDate")</span></b>
+            for <b>@modelData.get("leaveReason")</b>
+            .</p> <p>Click on <span><a href="http://portal:8080/leavemanager">http://portal:8080/leavemanager</a></span>
+            to approve or reject the leave.</p></div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+
+    <table st-table="displayed" class="table">
+        <thead>
+        <tr>
+            <th ng-repeat="header in headers" width="{{header.width}}%" st-sort="header.contentField">
+                {{header.label}}
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info">
+            <td ng-if="contents.length == 0" colspan="6" class="text-center">
+                No Records Available to Display
+            </td>
+        </tr>
+        <tr row-color="content.status" class="{{content.status|colorFilter}}" ng-repeat="content in contents">
+            <td>{{content.employeeId}}</td>
+            <td>{{content.fromDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{content.toDate| date:'dd/MM/yyyy'}}</td>
+            <td>{{content.leaveDays}}</td>
+            <td>{{content.leaveReason}}</td>
+            <td>
+                <span class="vertical-center glyphicon {{content.status|statusIcon}}" style="font-size:14px"
+                      aria-hidden="true"></span>
+                &nbsp;{{content.status}}
+
+                &nbsp; <a href="#" ng-show="{{content.status=='PENDING' && isApproveLeaves}}"
+                          ng-click="approveLeave(content.leaveId)" class="btn-link">Approve</a>
+                <a href="#" ng-show="{{content.status=='PENDING' && isApproveLeaves}}" ng-click="rejectLeave(content.leaveId)"
+                   class="btn-link">Reject</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <uib-pagination ng-show="totalItems > 10" total-items="totalItems" ng-model="leaveInfo.currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"
+                    rotate="false" num-pages="numPages" items-per-page = "10" ng-change="pageChange()"></uib-pagination>

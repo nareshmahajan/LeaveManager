@@ -1,0 +1,82 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="glyphicon glyphicon-home"></i>
+        <a href="#dashBoard">Dashboard</a>
+
+    </li>
+    <li class="active">Holiday</li>
+</ol>
+<div class="well well-sm">
+    <form>
+
+        <div class="row form-group">
+            <label class="col-sm-12">Apply For Holiday</label>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Holiday Date</label>
+
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                           ng-model="leaveInfo.holidayDate" placeholder="Holiday Date"
+                           is-open="datePicker.opened" min-date="minDate" max-date="maxDate" ng-disabled="disabled"
+                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                           close-text="Close" ng-required="true" date-disabled="disabled(date, mode)" custom-class="customCssClass(date,mode)"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fromDateOpen($event)" ng-disabled="disabled"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                </p>
+            </div>
+
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Reason</label>
+                <input type="text" class="form-control" ng-model="leaveInfo.reason" ng-disabled="disabled"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+
+                <button type="button" class="btn btn-success" ng-click="saveHoliday()" ng-disabled="disabled">{{saveBtnText}}</button>
+            </div>
+            <div class="col-sm-4 form-group">
+
+                <button type="button" class="btn btn-success" ng-click="clearEntryInfo()" ng-disabled="disabled"> Reset </button>
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<div>
+    <table st-table="displayed" class="table table-striped">
+        <thead>
+        <tr>
+            <th ng-repeat="header in headers" width="{{header.width}}%" st-sort="header.contentField">
+                {{header.label}}
+            </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="info">
+            <td ng-if="contents.length == 0" colspan="3" class="text-center">
+                No Records Available to Display
+            </td>
+        </tr>
+        <tr row-color="content.status"  ng-repeat="content in contents">
+
+            <td>
+                <span class="glyphicon glyphicon-zoom-in"  ng-click="viewHoliday(content)"></span>&nbsp;
+                <span class="glyphicon glyphicon-pencil" ng-click="editHoliday(content)"></span> &nbsp;
+                <span class="glyphicon glyphicon-trash" ng-click="deleteHoliday(content)"></span></td>
+            <td>{{content.holidayDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{content.reason}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>

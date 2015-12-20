@@ -1,0 +1,33 @@
+am-multiselect .dropdown-menu{
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 100%;
+}
+
+am-multiselect .dropdown-menu > li > a {
+    padding: 3px 10px;
+    cursor:pointer;
+}
+
+am-multiselect .dropdown-menu > li.selected {
+    background-color: #ADD8E6;
+}
+
+ul, li{
+    list-style-type: none;
+
+}
+.list-items{
+    max-height: 200px;
+    overflow: auto;
+}
+am-multiselect .btn-group
+{
+    width:100%;
+}
+
+am-multiselect button.dropdown-toggle
+{
+    width: 100%;
+    text-align: right;
+}

@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{titleText}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <label class="control-label">Holiday Date</label>
+
+            <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                       ng-model="leaveInfo.holidayDate" placeholder="Holiday Date"
+                       is-open="datePicker.opened" min-date="minDate" max-date="maxDate" ng-disabled="disabled"
+                       datepicker-options="dateOptions"  ng-required="true"
+                       close-text="Close" ng-required="true" date-disabled="dateDisabled(date, mode)" custom-class="customCssClass(date,mode)"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fromDateOpen($event)" ng-disabled="disabled"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+
+        <div class="col-sm-4 form-group">
+            <label class="control-label">Reason</label>
+            <input type="text" class="form-control" ng-model="leaveInfo.reason" ng-disabled="disabled"/>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="saveHoliday()" ng-hide="disabled">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

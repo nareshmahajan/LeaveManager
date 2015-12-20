@@ -1,0 +1,13 @@
+@(modelData: Map[String, String])
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div><p>Hi,</p> <p>
+            Your leave application for <b>@modelData.get("leaveReason") </b> From <b><span>@modelData.get("fromDate")</span></b>
+            till &nbsp;<b><span>@modelData.get("toDate")</span></b> has been Rejected. The Reject Reason is @modelData.get("rejectReason")</p></div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                                     controllers.Application.loginPage()
+GET         /home                                 controllers.Application.homePage()
+POST        /login                                security.controller.SecurityController.login()
+GET         /logout                               security.controller.SecurityController.logout()
+
+POST        /holidayList                          controllers.HolidayService.listHolidays()
+POST        /addHoliday                           controllers.HolidayService.addHoliday()
+POST        /updateHoliday                        controllers.HolidayService.updateHoliday()
+POST        /removeHoliday/:id                    controllers.HolidayService.removeHoliday(id: Integer)
+POST        /userLeavesOfCurrentYear              controllers.LeaveService.getUserLeavesOfCurrentYear()
+POST        /leavesCount                          controllers.LeaveService.getUserLeavesCount()
+POST        /applyLeave                           controllers.LeaveService.applyLeave()
+POST        /departments                          controllers.SearchLeavesService.getDepartments()
+POST        /departmentEmployees                  controllers.SearchLeavesService.getDepartmentEmployees()
+POST        /searchLeaves                         controllers.SearchLeavesService.searchLeaves()
+POST        /cancelLeave/:id                      controllers.LeaveService.cancelLeave(id: Integer)
+POST        /approveLeave/:id                     controllers.LeaveService.approveLeave(id: Integer)
+POST        /rejectLeave/:id                      controllers.LeaveService.rejectLeave(id: Integer)
+POST        /searchLeavesForApprover              controllers.LeaveService.searchLeavesForApprover()
+POST        /userCancelLeavesOfCurrentYear        controllers.LeaveService.getUserCancelLeavesOfCurrentYear()
+POST        /calenderEvents                       controllers.LeaveService.getCalendarEvents()
+POST        /onBehalfUserList                     controllers.LeaveService.getOnBehalfUserList()
+POST        /applyOnBehalfLeave                   controllers.LeaveService.applyOnBehalfLeave()
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                         controllers.Assets.versioned(path="/public", file: Asset)

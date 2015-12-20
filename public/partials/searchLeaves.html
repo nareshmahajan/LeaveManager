@@ -1,0 +1,73 @@
+<ol class="breadcrumb">
+    <li>
+        <i class="glyphicon glyphicon-home"></i>
+        <a href="#dashBoard">Dashboard</a>
+
+    </li>
+    <li class="active">{{headerText}}</li>
+</ol>
+<div class="well well-sm">
+    <form>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Date Range</label>
+
+                <p class="input-group">
+                    <input date-range-picker class="form-control date-picker" type="text" ng-model="leaveInfo.dateRange"
+                       ng-disabled="selectedSearchView =='CALENDARVIEW'"     />
+                     <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fromDateOpen($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                </p>
+            </div>
+
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Department</label>
+                <am-multiselect ms-header="Select Departments" class="" multiple="true"
+                                ng-model="leaveInfo.department"
+                                options="group.id as group.name for group in groups"
+                                change="selected()" ng-change="loadEmployees()"
+                                template-url="assets/partials/multiselect.tmpl.html"></am-multiselect>
+            </div>
+
+
+            <div class="col-sm-4 form-group">
+                <label class="control-label">Employee</label>
+                <am-multiselect class="" ms-header="Select Employee"
+                                ng-model="leaveInfo.employee"
+                                options="employee.id as employee.name for employee in employess"
+                                change="selected()"
+                                template-url="assets/partials/multiselect.tmpl.html"></am-multiselect>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-4">
+
+                <button type="button" class="btn btn-success" ng-click="searchLeaves()">Search Leave</button>
+
+            </div>
+            <div class="col-sm-8 text-right">
+                <div class="btn-group" role="group" aria-label="">
+
+                <button type="button" class="btn btn-success {{selectedSearchView =='LISTVIEW' ? 'active' : ''}}" ui-sref="searchLeaves.list" ng-click="activeView('LISTVIEW')">
+                    <i class="glyphicon glyphicon-list"></i>
+                </button>
+
+                <button type="button" class="btn btn-success {{selectedSearchView =='CALENDARVIEW' ? 'active' : ''}}" ui-sref="searchLeaves.calendarView" ng-click="activeView('CALENDARVIEW')">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+
+            </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div ui-view>
+</div>

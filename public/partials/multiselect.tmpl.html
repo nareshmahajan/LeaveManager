@@ -1,0 +1,19 @@
+<div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" ng-click="toggleSelect()" ng-disabled="disabled" ng-class="{'error': !valid()}">
+        <span class="pull-left">{{header}}</span>
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+        </li>
+        <li ng-show="multiple" role="presentation" class="">
+            <button class="btn btn-link btn-xs" ng-click="checkAll()" type="button"><i class="glyphicon glyphicon-ok"></i> Check all</button>
+            <button class="btn btn-link btn-xs" ng-click="uncheckAll()" type="button"><i class="glyphicon glyphicon-remove"></i> Uncheck all</button>
+        </li>
+        <li ng-repeat="i in items | filter:searchText">
+            <a ng-click="select(i); focus()">
+                <i class='glyphicon' style="color : {{!i.checked ? '#d9534f' : '#449d44'}}" ng-class="{'glyphicon-ok': i.checked, 'glyphicon-remove': !i.checked}"></i>
+                {{i.label}}</a>
+        </li>
+    </ul>
+</div>

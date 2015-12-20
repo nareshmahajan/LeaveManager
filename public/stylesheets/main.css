@@ -1,0 +1,58 @@
+body
+{
+    padding : 30px;
+    font-family: 'Open Sans';
+    color : #383737;
+}
+
+/*Summary Panel Classes*/
+.summary-leave-taken
+{
+    background-color: #65abd0;
+    font-family: 'Open Sans SemiBold';
+    color : #ffffff;
+}
+.summary-leave-planned
+{
+    background-color: #db7560;
+    font-family: 'Open Sans SemiBold';
+    color : #ffffff;
+}
+.summary-leave-available
+{
+    background-color: #24aa98;
+    font-family: 'Open Sans SemiBold';
+    color : #ffffff;
+}
+
+/* Table row color by Status */
+.row-status-pending
+{
+    color : #db7560;
+}
+
+.row-status-approved
+{
+    color : #5093b7;
+}
+
+.row-status-rejected
+{
+    color : #000000;
+}
+
+.row-status-cancelled
+{
+    /* Not Decide */
+}
+
+.cursor-pointer
+{
+    cursor : pointer;
+}
+/* Header Color*/
+.breadcrumb > li > a {
+    display: inline-block;
+    padding: 0 4px;
+    color: #C0392B;
+}

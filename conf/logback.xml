@@ -1,0 +1,31 @@
+<configuration>
+    
+  <conversionRule conversionWord="coloredLevel" converterClass="play.api.Logger$ColoredLevel" />
+
+  <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+      <file>${application.home}/logs/application.log</file>
+    <encoder>
+      <pattern>%coloredLevel - %logger - %message%n%xException</pattern>
+    </encoder>
+  </appender>
+
+  <!--
+    The logger name is typically the Java/Scala package name.
+    This configures the log level to log at for a package and its children packages.
+  -->
+  <logger name="play" level="INFO" />
+  <logger name="application" level="DEBUG" />
+  <logger name="controllers" level="DEBUG" />
+
+    <logger name="org.avaje.ebean.SQL" level="TRACE"/>
+
+    <!-- Transaction Commit and Rollback events -->
+    <logger name="org.avaje.ebean.TXN" level="TRACE"/>
+
+    <logger name="org.avaje.ebean.SUM" level="TRACE"/>
+
+  <root level="ERROR">
+    <appender-ref ref="FILE" />
+  </root>
+
+</configuration>

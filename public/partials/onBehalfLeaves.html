@@ -1,0 +1,101 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="glyphicon glyphicon-home"></i>
+        <a href="#dashBoard">Dashboard</a>
+
+    </li>
+    <li class="active">
+        On Behalf Leave
+    </li>
+
+</ul>
+<div class="well well-sm" >
+
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Apply For Leave</label>
+        </div>
+
+        <div class="row form-group">
+
+            <label class="col-sm-2 control-label" >Employee</label>
+
+            <div class="col-sm-6">
+
+                <select class="form-control" ng-model="leaveInfo.employeeId" placeholder="Select Employee">
+                    <option value= "{{employee.id}}" ng-repeat="employee in onBehalfEmployeeList">
+                        {{employee.name}}
+                    </option>
+
+                </select>
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label class="col-sm-2 control-label" >Date Range</label>
+
+            <div class="col-sm-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                           ng-model="leaveInfo.fromDate" placeholder="From Date"
+                           is-open="fromDatePicker.opened" min-date="minDate" max-date="maxDate"
+                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                           close-text="Close" ng-required="true" date-disabled="disabled(date, mode)" custom-class="customCssClass(date,mode)"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="fromDateOpen($event)"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                </p>
+
+            </div>
+            <div class="col-sm-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+                           ng-model="leaveInfo.toDate" placeholder="To Date"
+                           is-open="toDatePicker.opened" min-date="minDate" max-date="maxDate"
+                           datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                           close-text="Close" date-disabled="disabled(date, mode)" custom-class="customCssClass(date,mode)"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="toDateOpen($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <label class="col-sm-2 control-label" >Leave Type</label>
+
+            <div class="col-sm-6">
+
+                <select class="form-control" ng-model="leaveInfo.leaveType">
+                    <option value= "PLANNED">Planned Leave </option>
+                    <option value= "ADHOC">Adhoc Leave </option>
+                    <option value= "SEEK">Seek Leave </option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="row form-group">
+
+            <label class="col-sm-2 control-label" >Reason</label>
+
+            <div class="col-sm-6">
+                <input type="text" class="form-control" ng-model="leaveInfo.leaveReason"/>
+            </div>
+
+        </div>
+
+        <div class="row form-group">
+            <div class="col-sm-6 col-sm-offset-2">
+                <button type="button" class="btn btn-success" ng-click="applyLeave()">Apply Leave</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>

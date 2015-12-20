@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="leaveManagerApp">
+    <head lang="en">
+        <script language="JavaScript">
+        var isAdminUser = '@session.get("isAdmin")';
+        var isApprover =  '@session.get("isApprover")';
+        </script>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/open-sans.css")">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/simple-sidebar.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/daterangepicker.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/multiselect.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/toaster.min.css")">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/angular-bootstrap-calendar.css")">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/vendor/fullcalendar.css")">
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+
+        <title>Leave Manager</title>
+
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/jquery-1.11.3.min.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/vendor/bootstrap.min.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/angular.min.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/angular-animate.min.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/angular-ui-route.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/angular-resource.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/angular-aria.min.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/ui-bootstrap-tpls-0.14.3.min.js")"></script>
+
+
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/moment.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/calendar.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/daterange-picker.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/angular-daterangepicker.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/multiselect.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/bootstrap/toaster.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/angular/smart-table.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/fullcalendar.min.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/vendor/gcal.js")"></script>
+
+        <script src="@routes.Assets.versioned("javaScripts/angular/app.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/angular/controllers.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/angular/filters.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/angular/directives.js")"></script>
+        <script src="@routes.Assets.versioned("javaScripts/angular/services.js")"></script>
+
+
+    </head>
+    <body>
+        <div class="container"  ng-controller="MainController" ng-view>
+
+
+
+            <div id="navbar" class="navbar">
+                <div class="navbar-inner">
+                    <div class="">
+                        <a  href="#">
+                            <small><img src="assets/images/omniscient-logo.png" /></small>
+                        </a>
+                        <ul class="nav pull-right">
+                            <li>
+
+                                <small>Welcome,</small> @session.get("user_description")
+                                <form action="logout" style="display:inline-block">
+                                    <button type="submit" class="btn btn-small btn-danger" style="margin-top:0px;">Sign Out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well well-sm">
+                        <ul class="nav nav-pills nav-stacked">
+
+                            <li  role="presentation" class="{{menu.class}}" ng-repeat="menu in menuList" ng-click="toggleMenu(menu)">
+                                <a href="#" ui-sref="{{menu.target}}">{{ menu.name }}</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="well well-sm">
+                        <h5><strong>HOLIDAYS LIST</strong></h5>
+                        <div style="padding-left:10px;">
+                            <address ng-repeat="holiday in holidayList">
+                                <strong>{{holiday.reason}}</strong><br>
+                                {{holiday.holidayDate | date }}
+                            </address>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9" ui-view>
+
+		            </div>
+                <toaster-container toaster-options="{'time-out': 0, 'close-button':true, 'animation-class': 'toast-bottom-right',
+                    'position-class':'toast-middle-right'}"></toaster-container>
+            </div>
+        </div>
+
+    </body>
+</html>

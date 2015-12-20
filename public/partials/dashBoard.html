@@ -1,0 +1,33 @@
+<ul class="breadcrumb">
+    <li>
+        <i class="glyphicon glyphicon-home"></i>
+        <a href="#dashBoard">{{labels.homeText}}</a>
+
+    </li>
+    <li class="active" ng-show="labels.isActiveBreadCrumb">
+					{{labels.BreadCrumbText}}
+    </li>
+</ul>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="well well-sm summary-leave-taken">
+            <h3>{{leaveCountInfo.leavesTaken}}</h3>
+            <label>Leaves Taken</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="well well-sm summary-leave-planned">
+            <h3>{{leaveCountInfo.leavesPending}}</h3>
+            <label>Planned Leaves</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="well well-sm summary-leave-available">
+            <h3>{{leaveCountInfo.leavesAvailable}}</h3>
+            <label>Leaves Available</label>
+        </div>
+    </div>
+</div>
+<div ui-view>
+
+</div>
